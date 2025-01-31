@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -100,7 +101,13 @@ export default function Signup() {
               />
             </div>
           </div>
-
+          <div>
+            If you already have an account,click {" "}
+            <Link to="/login" className="text-blue-600">
+              here
+            </Link>
+            .
+          </div>
           <div>
             <button
               type="submit"

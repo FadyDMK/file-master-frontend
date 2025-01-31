@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,8 +19,11 @@ export default function Login() {
           password,
         }
       );
-
+      console.log(response.data.token)
+      // Save the token in local storage
+      localStorage.setItem('token', response.data.token);
       console.log(response.data);
+      navigate(`/files?folderId=${response.data.folderId}`);
     } catch (error) {
       setError(
         error.response?.data?.error || "An error occurred. Please try again."
@@ -76,7 +82,13 @@ export default function Login() {
               />
             </div>
           </div>
-
+          <div>
+            If you don&apos;t have an account,click{" "}
+            <Link to="/sign-up" className="text-blue-600">
+              here
+            </Link>
+            .
+          </div>
           <div>
             <button
               type="submit"
