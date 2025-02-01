@@ -1,0 +1,15 @@
+.wrapper{
+    margin-left: 15rem;
+    margin-top: 2rem;
+}
+.folderGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  
+}
+
+@media screen and (max-width: 600px){
+    .folderGroup{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 0.7fr));
+    }
+}
